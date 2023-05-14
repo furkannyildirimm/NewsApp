@@ -7,17 +7,20 @@
 
 import UIKit
 import Alamofire
-import Kingfisher
+import SDWebImage
 
 final class NewsListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var abstractLabel: UILabel!
+    @IBOutlet weak var outSV: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        outSV.cornerRadius = 20
+        outSV.layer.borderColor = UIColor.black.cgColor
+        outSV.layer.borderWidth = 1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,9 +30,14 @@ final class NewsListTableViewCell: UITableViewCell {
     }
     
     func set(model: NewsResult) {
-        titleLabel.text = model.title
-        abstractLabel.text = model.abstract
-        newsImageView.kf.setImage(with: URL(string: model.multimedia?.first?.url ?? ""))
+            titleLabel.text = model.title
+            abstractLabel.text = model.abstract
+            if let urlStr = model.multimedia?.first?.url, let url = URL(string: urlStr) {
+                newsImageView.sd_setImage(with: url, completed: nil)
+            } else {
+                newsImageView.image = nil
+            }
+        }
     }
     
-}
+

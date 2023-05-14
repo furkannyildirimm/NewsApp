@@ -107,6 +107,7 @@
             <connections>
                 <outlet property="abstractLabel" destination="4la-aX-H9i" id="FgB-zg-ZFg"/>
                 <outlet property="newsImageView" destination="Yp1-gM-WQB" id="mXA-Ff-4Cx"/>
+                <outlet property="outSV" destination="HXy-Nn-YVF" id="aP8-nd-O1H"/>
                 <outlet property="titleLabel" destination="zxV-cp-hym" id="lkB-ia-ekY"/>
             </connections>
             <point key="canvasLocation" x="67.938931297709928" y="-64.08450704225352"/>

@@ -19,6 +19,8 @@ final class NewsListVC: UIViewController {
         super.viewDidLoad()
         newsTableView.register(UINib(nibName: "NewsListTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         fetchData()
+        newsTableView.separatorStyle = .none
+        
         
     }
     
@@ -60,10 +62,17 @@ extension NewsListVC: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension NewsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let clickedModel: NewsResult = newsList?.results[indexPath.row] else { return }
-        let detailVC = DetailPageVC()
-        detailVC.set(model: clickedModel)
-        navigationController?.pushViewController(detailVC, animated: true)
+        guard let clickedModel: NewsResult = searchMake ? searchResult?.results[indexPath.row] : newsList?.results[indexPath.row] else { return }
+//        let detailVC = ViewController2()
+//        //detailVC.set(model: clickedModel)
+//        navigationController?.pushViewController(detailVC, animated: true)
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailPageVC
+        vc.set(model: clickedModel)
+                vc.navigationItem.largeTitleDisplayMode = .never
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .flipHorizontal
+                navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

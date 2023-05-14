@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
+import SafariServices
 
 final class DetailPageVC: UIViewController {
-
+    
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var newsTitleLabel: UILabel!
     @IBOutlet weak var newsAbstractLabel: UILabel!
@@ -20,15 +21,18 @@ final class DetailPageVC: UIViewController {
         
         guard let model = model else { return }
         
-        //newsImageView.kf.setImage(with: URL(string: model.multimedia?.first?.url ?? ""))
-        
-        //newsTitleLabel.text = model.title
-        
-        //newsAbstractLabel.text = model.abstract
-    
+        newsImageView.sd_setImage(with: URL(string: model.multimedia?.first?.url ?? ""), completed: nil)
+        newsTitleLabel.text = model.title
+        newsAbstractLabel.text = model.abstract
     }
     
     func set(model: NewsResult) {
         self.model = model
+    }
+    @IBAction func openInSafariButtonTapped(_ sender: UIButton) {
+        guard let urlString = model?.url,
+              let url = URL(string: urlString) else { return }
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true, completion: nil)
     }
 }
