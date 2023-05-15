@@ -39,7 +39,7 @@ final class NewsCVCell: UICollectionViewCell {
     func set(model: NewsResult) {
         
         titleLabel.text = model.title
-        subsectionLabel.text = model.subsection
+        subsectionLabel.text = model.byline
         if let urlStr = model.multimedia?.first?.url, let url = URL(string: urlStr) {
             newsImageView.sd_setImage(with: url, completed: nil)
         } else {
