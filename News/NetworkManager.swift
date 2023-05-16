@@ -12,7 +12,7 @@ final class NetworkManager {
     static let shared = NetworkManager()
 
     func fetchData<T: Decodable>(valueName: String, completion: @escaping(Result<T, Error>) -> Void) {
-        let url = "https://api.nytimes.com/svc/topstories/v2/\(valueName).json?api-key=FmxETpi8nVMR85j64xjVjXAKZkWAVBQW"
+        let url = "\(Constants.apiBaseURL.rawValue)\(valueName)\(Constants.jsonApiKey.rawValue)\(Constants.apiKey.rawValue)"
         AF.request(url).responseDecodable(of: T.self, decoder: JSONDecoder()) { response in
             switch response.result {
             case .success(let result):

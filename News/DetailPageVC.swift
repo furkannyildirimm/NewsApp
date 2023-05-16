@@ -11,9 +11,9 @@ import SafariServices
 
 final class DetailPageVC: UIViewController {
     
-    @IBOutlet weak var newsImageView: UIImageView!
-    @IBOutlet weak var newsTitleLabel: UILabel!
-    @IBOutlet weak var newsAbstractLabel: UILabel!
+    @IBOutlet private weak var newsImageView: UIImageView!
+    @IBOutlet private weak var newsTitleLabel: UILabel!
+    @IBOutlet private weak var newsAbstractLabel: UILabel!
     
     var model: NewsResult?
     override func viewDidLoad() {

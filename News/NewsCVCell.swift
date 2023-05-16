@@ -11,12 +11,11 @@ import SDWebImage
 
 final class NewsCVCell: UICollectionViewCell {
     
-    
-    @IBOutlet weak var newsImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subsectionLabel: UILabel!
-    @IBOutlet weak var outSV: UIStackView!
-    @IBOutlet weak var titleSV: UIStackView!
+    @IBOutlet private weak var newsImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subsectionLabel: UILabel!
+    @IBOutlet private weak var outSV: UIStackView!
+    @IBOutlet private weak var titleSV: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +32,6 @@ final class NewsCVCell: UICollectionViewCell {
         titleSV.layer.borderColor = UIColor.black.cgColor
         titleSV.cornerRadius = 10
         titleSV.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        
     }
     
     func set(model: NewsResult) {
