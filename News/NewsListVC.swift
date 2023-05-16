@@ -14,17 +14,33 @@ final class NewsListVC: UIViewController {
     var newsList: News?
     var searchMake = false
     var searchResult: News?
-    @IBOutlet private weak var emptyView: EmptyView!
+    private var notFoundImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         newsTableView.register(UINib(nibName: "NewsListTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         fetchData()
         newsTableView.separatorStyle = .none
+        notFoundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        notFoundImageView.image = UIImage(named: "notFound")
+        notFoundImageView.contentMode = .scaleAspectFit
+        notFoundImageView.center = view.center
+        notFoundImageView.isHidden = true
+        notFoundImageView.layer.cornerRadius = 50
+        notFoundImageView.clipsToBounds = true
+        view.addSubview(notFoundImageView)
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        notFoundImageView.center = view.center
+    }
+    
+    
+    
     private func fetchData() {
-        NetworkManager.shared.fetchData(valueName: "books") { (result: Result<News, Error>) in
+        NetworkManager.shared.fetchData(valueName: "world") { (result: Result<News, Error>) in
             switch result {
             case .success(let news):
                 self.newsList = news
@@ -34,49 +50,54 @@ final class NewsListVC: UIViewController {
             }
         }
     }
-
-    private func showEmptyView(){
-        if let list = searchResult?.results{
-            emptyView.isHidden = !list.isEmpty
-            newsTableView.isHidden = list.isEmpty
-        }else{
-            emptyView.isHidden = true
-            newsTableView.isHidden = false
-        }
-    }
 }
 
 // MARK: - UITableViewDataSource
 extension NewsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchMake, let searchResult = searchResult {
-            return searchResult.results.count
-        } else if let newsList = newsList {
-            return newsList.results.count
+        if searchMake {
+            return searchResult?.results.count ?? 0
         } else {
-            return 0
+            return newsList?.results.count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsListTableViewCell else { return .init() }
-        let model = searchMake ? searchResult!.results[indexPath.row] : newsList!.results[indexPath.row]
-        cell.set(model: model)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsListTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        if searchMake, let result = searchResult {
+            cell.set(model: result.results[indexPath.row])
+        } else if let news = newsList {
+            cell.set(model: news.results[indexPath.row])
+        }
+        
         return cell
     }
 }
 
+
 // MARK: - UITableViewDelegate
 extension NewsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let clickedModel: NewsResult = searchMake ? searchResult?.results[indexPath.row] : newsList?.results[indexPath.row] else { return }
-
-        let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailPageVC
-        vc.set(model: clickedModel)
-                vc.navigationItem.largeTitleDisplayMode = .never
-                vc.modalPresentationStyle = .fullScreen
-                vc.modalTransitionStyle = .flipHorizontal
-                navigationController?.pushViewController(vc, animated: true)
+        if searchMake, let result = searchResult {
+            let clickedModel = result.results[indexPath.row]
+            let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailPageVC
+            vc.set(model: clickedModel)
+            vc.navigationItem.largeTitleDisplayMode = .never
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            navigationController?.pushViewController(vc, animated: true)
+        } else if let news = newsList {
+            let clickedModel = news.results[indexPath.row]
+            let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as! DetailPageVC
+            vc.set(model: clickedModel)
+            vc.navigationItem.largeTitleDisplayMode = .never
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,32 +109,41 @@ extension NewsListVC: UITableViewDelegate {
 extension NewsListVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText.isEmpty {
-            searchMake = false
-            searchResult = nil
-        } else {
-            searchMake = true
-            if let newsList = newsList {
-                searchResult = News(results: newsList.results.filter { $0.title.lowercased().contains(searchText.lowercased()) })
-               
-            }
-            showEmptyView()
-           
-        }
-        newsTableView.reloadData()
+        filterNewsList(for: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        searchMake = false
-        searchResult = nil
-        showEmptyView()
-        newsTableView.reloadData()
+        filterNewsList(for: "")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
+    private func filterNewsList(for searchText: String) {
+        if searchText.isEmpty {
+            searchMake = false
+            searchResult = nil
+            notFoundImageView.isHidden = true
+        } else {
+            searchMake = true
+            searchResult = newsList?.filterResults(with: searchText)
+            
+            if searchResult?.results.isEmpty ?? true {
+                notFoundImageView.isHidden = false
+            } else {
+                notFoundImageView.isHidden = true
+            }
+        }
+        newsTableView.reloadData()
+    }
 }
+
+extension News {
+    func filterResults(with searchText: String) -> News {
+        let filteredResults = results.filter { $0.title.range(of: searchText, options: .caseInsensitive) != nil }
+        return News(results: filteredResults)}
+}
+
