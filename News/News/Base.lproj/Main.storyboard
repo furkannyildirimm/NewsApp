@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home PageVC-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomePageVC" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -260,7 +260,7 @@
                             <constraint firstItem="DQx-eg-P6w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dnm-Ss-l92"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oeJ-Ey-kfh"/>
+                    <navigationItem key="navigationItem" title="Home" id="oeJ-Ey-kfh"/>
                     <connections>
                         <outlet property="categoryCollectionView" destination="I17-sy-CTG" id="Rvc-8A-Veh"/>
                         <outlet property="categoryTitleLabel" destination="Jyh-0g-z0r" id="SaM-DH-H80"/>
@@ -271,7 +271,7 @@
             </objects>
             <point key="canvasLocation" x="1678.6259541984732" y="-719.0140845070423"/>
         </scene>
-        <!--News ListVC-->
+        <!--World News-->
         <scene sceneID="0Ss-HG-ns2">
             <objects>
                 <viewController id="AdZ-yA-eE7" customClass="NewsListVC" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
@@ -312,7 +312,7 @@
                             <constraint firstItem="Yg6-pD-RTR" firstAttribute="leading" secondItem="9gq-pb-IJ6" secondAttribute="leading" id="xqb-G9-cOI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wyk-e3-fb3"/>
+                    <navigationItem key="navigationItem" title="World News" id="Wyk-e3-fb3"/>
                     <connections>
                         <outlet property="newsSearchBar" destination="w9z-fc-RV7" id="KHq-Vh-Yt2"/>
                         <outlet property="newsTableView" destination="Yg6-pD-RTR" id="pRy-7D-ld4"/>
@@ -444,22 +444,6 @@
             </objects>
             <point key="canvasLocation" x="2044" y="-25"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Rti-U9-bHa">
-            <objects>
-                <viewController id="ZJi-nf-fT4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hEz-Mr-qNR">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="w6s-aP-H12"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="square.and.arrow.up.fill" catalog="system" selectedImage="square.and.arrow.up" id="Ez4-Em-egG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bUn-WT-8Yk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-500" y="670"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gh1-RQ-7Ic">
             <objects>
@@ -480,7 +464,6 @@
                     <connections>
                         <segue destination="bq6-r9-sOi" kind="relationship" relationship="viewControllers" id="P6f-tc-NN0"/>
                         <segue destination="Cyi-5c-Otl" kind="relationship" relationship="viewControllers" id="HCc-Ac-Foa"/>
-                        <segue destination="ZJi-nf-fT4" kind="relationship" relationship="viewControllers" id="XT3-Qm-EIV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4p5-mu-J0F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -530,8 +513,6 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

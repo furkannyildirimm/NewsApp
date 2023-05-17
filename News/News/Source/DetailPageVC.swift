@@ -2,7 +2,7 @@
 //  DetailPageVC.swift
 //  News
 //
-//  Created by STARK on 13.05.2023.
+//  Created by FurkanYıldırım on 13.05.2023.
 //
 
 import UIKit

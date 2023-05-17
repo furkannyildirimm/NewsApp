@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  News
 //
-//  Created by STARK on 12.05.2023.
+//  Created by FurkanYıldırım on 12.05.2023.
 //
 
 import UIKit

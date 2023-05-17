@@ -2,7 +2,7 @@
 //  NewsCVCell.swift
 //  News
 //
-//  Created by STARK on 14.05.2023.
+//  Created by FurkanYıldırım on 14.05.2023.
 //
 
 import UIKit
