@@ -11,6 +11,8 @@ import SDWebImage
 
 final class NewsCVCell: UICollectionViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet private weak var newsImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subsectionLabel: UILabel!
@@ -35,6 +37,7 @@ final class NewsCVCell: UICollectionViewCell {
         titleSV.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
+    // MARK: - Public Methods
     func set(model: NewsResult) {
         
         titleLabel.text = model.title

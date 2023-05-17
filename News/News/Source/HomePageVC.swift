@@ -9,27 +9,30 @@ import UIKit
 
 final class HomePageVC: UIViewController {
     
-    
+    // MARK: - Outlets
     @IBOutlet private weak var categoryCollectionView: UICollectionView!
     @IBOutlet private weak var categoryTitleLabel: UILabel!
     @IBOutlet private weak var newsCollectionView: UICollectionView!
+    
+    // MARK: - Properties
     var news: News?
     private var selectedCategory: String = "arts"
     var categories: [String] = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "obituaries", "opinion", "politics", "realestate", "science", "sports", "technology", "travel", "us", "world"]
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         fetchData()
     }
     
+    // MARK: - Private Methods
     private func configureCollectionView(){
         categoryCollectionView.showsHorizontalScrollIndicator = false
         if let flowLayout = newsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = .zero
         }
     }
-        
     
     private func fetchData() {
         NetworkManager.shared.fetchData(valueName: selectedCategory) { (result: Result<News, Error>) in
@@ -44,6 +47,7 @@ final class HomePageVC: UIViewController {
         }
     }
 }
+
 // MARK: - UICollectionViewDataSource
 extension HomePageVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

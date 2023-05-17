@@ -9,17 +9,39 @@ import UIKit
 
 final class NewsListVC: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var newsSearchBar: UISearchBar!
     @IBOutlet private weak var newsTableView: UITableView!
+    
+    // MARK: - Properties
     var newsList: News?
     var searchMake = false
     var searchResult: News?
     private var notFoundImageView: UIImageView!
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        newsTableView.register(UINib(nibName: "NewsListTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+        registerNewsTableViewCell()
         fetchData()
+        configureNotFoundView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        centerNotFoundImageView()
+    }
+    
+    // MARK: - Private Methods
+    private func centerNotFoundImageView(){
+        notFoundImageView.center = view.center
+    }
+    
+    private func registerNewsTableViewCell(){
+        newsTableView.register(UINib(nibName: "NewsListTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
+    }
+    
+    private func configureNotFoundView(){
         newsTableView.separatorStyle = .none
         notFoundImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         notFoundImageView.image = UIImage(named: "notFound")
@@ -30,14 +52,6 @@ final class NewsListVC: UIViewController {
         notFoundImageView.clipsToBounds = true
         view.addSubview(notFoundImageView)
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        notFoundImageView.center = view.center
-    }
-    
-    
     
     private func fetchData() {
         NetworkManager.shared.fetchData(valueName: "world") { (result: Result<News, Error>) in
@@ -72,11 +86,9 @@ extension NewsListVC: UITableViewDataSource {
         } else if let news = newsList {
             cell.set(model: news.results[indexPath.row])
         }
-        
         return cell
     }
 }
-
 
 // MARK: - UITableViewDelegate
 extension NewsListVC: UITableViewDelegate {
@@ -141,6 +153,7 @@ extension NewsListVC: UISearchBarDelegate {
     }
 }
 
+// MARK: - News+Filtering
 extension News {
     func filterResults(with searchText: String) -> News {
         let filteredResults = results.filter { $0.title.range(of: searchText, options: .caseInsensitive) != nil }
@@ -149,6 +162,6 @@ extension News {
     func filterResults() -> News {
         let filteredResults = results.filter { !$0.title.isEmpty }
         return News(results: filteredResults)}
-    }
+}
 
 

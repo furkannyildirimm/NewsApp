@@ -9,8 +9,11 @@ import UIKit
 
 final class CategoryCVCell: UICollectionViewCell {
     
+    // MARK: - Outlets
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var outSV: UIStackView!
+    
+    // MARK: - Properties
     let color = UIColor(hex: "AFD3E2")
 
     override func awakeFromNib() {
@@ -20,14 +23,14 @@ final class CategoryCVCell: UICollectionViewCell {
         outSV.layer.borderWidth = 1
     }
     
+    // MARK: - Public Methods
     func configure(category: String, isSelected: Bool) {
         categoryLabel.text = category.uppercased()
-        
         outSV.backgroundColor = isSelected ? color : UIColor.white
-
     }
 }
 
+// MARK: - UIColor Extension
 extension UIColor {
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         var formattedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
