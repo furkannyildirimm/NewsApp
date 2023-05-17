@@ -13,7 +13,7 @@ final class NewsListTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var newsImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var abstractLabel: UILabel!
+    @IBOutlet private weak var bylineLabel: UILabel!
     @IBOutlet private weak var outSV: UIStackView!
     
     override func awakeFromNib() {
@@ -25,7 +25,7 @@ final class NewsListTableViewCell: UITableViewCell {
     
     func set(model: NewsResult) {
             titleLabel.text = model.title
-            abstractLabel.text = model.abstract
+            bylineLabel.text = model.byline
             if let urlStr = model.multimedia?.first?.url, let url = URL(string: urlStr) {
                 newsImageView.sd_setImage(with: url, completed: nil)
             } else {

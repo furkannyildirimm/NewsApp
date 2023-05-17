@@ -15,6 +15,7 @@ final class DetailPageVC: UIViewController {
     @IBOutlet private weak var newsTitleLabel: UILabel!
     @IBOutlet private weak var newsAbstractLabel: UILabel!
     
+    @IBOutlet weak var bylineLabel: UILabel!
     var model: NewsResult?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ final class DetailPageVC: UIViewController {
         newsImageView.sd_setImage(with: URL(string: model.multimedia?.first?.url ?? ""), completed: nil)
         newsTitleLabel.text = model.title
         newsAbstractLabel.text = model.abstract
+        bylineLabel.text = model.byline
     }
     
     func set(model: NewsResult) {

@@ -43,7 +43,7 @@ final class NewsListVC: UIViewController {
         NetworkManager.shared.fetchData(valueName: "world") { (result: Result<News, Error>) in
             switch result {
             case .success(let news):
-                self.newsList = news
+                self.newsList = news.filterResults()
                 self.newsTableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -145,5 +145,10 @@ extension News {
     func filterResults(with searchText: String) -> News {
         let filteredResults = results.filter { $0.title.range(of: searchText, options: .caseInsensitive) != nil }
         return News(results: filteredResults)}
-}
+    
+    func filterResults() -> News {
+        let filteredResults = results.filter { !$0.title.isEmpty }
+        return News(results: filteredResults)}
+    }
+
 

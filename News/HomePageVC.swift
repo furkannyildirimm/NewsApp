@@ -36,7 +36,7 @@ final class HomePageVC: UIViewController {
             switch result {
                 
             case .success(let news):
-                self.news = news
+                self.news = news.filterResults()
                 self.newsCollectionView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
