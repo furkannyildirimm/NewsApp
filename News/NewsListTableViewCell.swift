@@ -19,7 +19,7 @@ final class NewsListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         outSV.cornerRadius = 20
-        outSV.layer.borderColor = UIColor.black.cgColor
+        outSV.layer.borderColor = UIColor.white.cgColor
         outSV.layer.borderWidth = 1
     }
     

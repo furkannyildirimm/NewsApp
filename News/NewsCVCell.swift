@@ -16,6 +16,7 @@ final class NewsCVCell: UICollectionViewCell {
     @IBOutlet private weak var subsectionLabel: UILabel!
     @IBOutlet private weak var outSV: UIStackView!
     @IBOutlet private weak var titleSV: UIStackView!
+    let color = UIColor(hex: "AFD3E2")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,11 +26,11 @@ final class NewsCVCell: UICollectionViewCell {
         newsImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         outSV.layer.borderWidth = 1
-        outSV.layer.borderColor = UIColor.black.cgColor
+        outSV.layer.borderColor = UIColor.white.cgColor
         outSV.cornerRadius = 15
         
         titleSV.layer.borderWidth = 1
-        titleSV.layer.borderColor = UIColor.black.cgColor
+        titleSV.layer.borderColor = UIColor.white.cgColor
         titleSV.cornerRadius = 10
         titleSV.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
