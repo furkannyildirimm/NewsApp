@@ -9,6 +9,16 @@ Bu proje, NYTimes API'sini kullanarak Swift dilinde bir haber uygulaması geliş
 - Haber başlıklarına tıklayarak haber detaylarını görüntüleme.
 - Dünyadaki haberler için listelenmiş şekilde bulunan haberleri arama özelliği ile haberleri anahtar kelimeye göre filtreleme.
 
+## Tasarım Deseni: MVC (Model-View-Controller)
+
+Bu projede, Model-View-Controller (MVC) tasarım desenini kullanmayı tercih ettik. MVC, uygulamanın mantıksal bileşenlerini ayrı bölmelerde organize etmemize olanak tanır.
+
+- **Model**: Uygulama veri ve iş mantığını temsil eder. Verilerin saklandığı ve işlendiği yerdir.
+- **View**: Kullanıcı arayüzünü temsil eder. Verilerin gösterildiği ve kullanıcının etkileşimde bulunduğu bileşendir.
+- **Controller**: Model ve View arasında iletişimi sağlar. Kullanıcı etkileşimini alır, modeli günceller ve görünümü güncelleyerek kullanıcıya geri bildirim sağlar.
+
+MVC deseni, uygulamanın parçalarını ayrı tutarak sürdürülebilirliği, bakımı ve yeniden kullanılabilirliği artırır.
+
 ## Gereksinimler
 
 - Swift 5.0 veya üzeri
