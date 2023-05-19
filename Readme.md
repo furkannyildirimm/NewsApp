@@ -20,13 +20,13 @@ NewsAPP            | Iphone 14 Pro
 :-------------------------:|:-------------------------:
 ![](https://github.com/furkannyildirimm/FurkanYildirim_HW2/blob/main/GIF/1.gif)  |  ![](https://github.com/furkannyildirimm/FurkanYildirim_HW2/blob/main/GIF/2.gif)
 
-##Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 - Swift: iOS uygulama geliştirmek için kullanılan bir programlama dili.
 - NYTimes API: NYTimes'in sağladığı haberlere erişmek için kullanılan bir haber API'si.
 - Alamofire: HTTP istekleri yapmak için kullanılan bir Swift kütüphanesi.
 - SDWebImage: Uzaktan görüntüleri önbelleğe almak ve yüklemek için kullanılan bir Swift kütüphanesi.
 
-##İletişim
+## İletişim
 - Eğer herhangi bir sorunuz, öneriniz veya geri bildiriminiz varsa, bize şu e-posta adresinden ulaşabilirsiniz: [furkannyildirimm@hotmail.com]
 
