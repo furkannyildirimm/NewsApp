@@ -18,4 +18,4 @@ Bu proje, NYTimes API'sini kullanarak Swift dilinde bir haber uygulaması geliş
 
 NewsAPP            | Iphone 14 Pro
 :-------------------------:|:-------------------------:
-![](https://github.com/furkannyildirimm/FurkanYildirim_HW2/tree/main/GIF/1.gif)  |  ![](https://github.com/furkannyildirimm/FurkanYildirim_HW2/tree/main/GIF/2.gif)
+<img src="https://github.com/furkannyildirimm/FurkanYildirim_HW2/tree/main/GIF/1.gif" alt="1" width="500px"> |  <img src="https://github.com/furkannyildirimm/FurkanYildirim_HW2/tree/main/GIF/2.gif" alt="2" width="500px">
