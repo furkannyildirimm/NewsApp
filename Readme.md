@@ -2,8 +2,6 @@
 
 Bu proje, NYTimes API'sini kullanarak Swift dilinde bir haber uygulaması geliştirmek için yapılmıştır. Uygulama, NYTimes'in sağladığı haberleri alır ve kullanıcılara gösterir.
 
-![1](Image/1.png)
-
 ## Özellikler
 
 - Ana sayfada en son haberleri görüntüler.
@@ -15,3 +13,6 @@ Bu proje, NYTimes API'sini kullanarak Swift dilinde bir haber uygulaması geliş
 
 - Swift 5.0 veya üzeri
 - Xcode 13.0 veya üzeri
+
+## Ekran Görüntüsü
+
