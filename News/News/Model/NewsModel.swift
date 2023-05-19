@@ -13,7 +13,7 @@ struct NewsResult: Decodable {
     var title: String
     var abstract: String
     var multimedia: [NewsMultimedia]?
-    var url: String //Bunu sor ???
+    var url: String
     var byline: String
     var section: String
 }

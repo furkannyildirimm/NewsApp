@@ -104,6 +104,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5832A3ED2A17B54700C3074D /* NewsCVCell */ = {
+			isa = PBXGroup;
+			children = (
+				5898A2142A11214C00B0CDE9 /* NewsCVCell.swift */,
+			);
+			path = NewsCVCell;
+			sourceTree = "<group>";
+		};
+		5832A3EE2A17B55E00C3074D /* CategoryCVCell */ = {
+			isa = PBXGroup;
+			children = (
+				58B23F322A13A2EE0002CC02 /* CategoryCVCell.swift */,
+			);
+			path = CategoryCVCell;
+			sourceTree = "<group>";
+		};
+		5832A3EF2A17B5A100C3074D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5898A1F92A0FC9E900B0CDE9 /* DetailPageVC.swift */,
+				5843F7A92A0EE4BB00A1360F /* NewsListVC.swift */,
+				5898A2022A10429500B0CDE9 /* HomePageVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5843F7662A0ED1EE00A1360F = {
 			isa = PBXGroup;
 			children = (
@@ -132,7 +158,6 @@
 				58E97AFD2A15823D001A2F5A /* Constants */,
 				58E97B002A1582D4001A2F5A /* Presentation */,
 				58E97B052A1583F8001A2F5A /* Extension */,
-				58E97B042A158379001A2F5A /* Source */,
 				5898A23C2A12E6ED00B0CDE9 /* Assets.xcassets */,
 				5843F7722A0ED1EE00A1360F /* AppDelegate.swift */,
 				5843F7742A0ED1EE00A1360F /* SceneDelegate.swift */,
@@ -180,6 +205,7 @@
 		58E97B002A1582D4001A2F5A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5832A3EF2A17B5A100C3074D /* ViewControllers */,
 				58E97B012A1582E5001A2F5A /* Views */,
 			);
 			path = Presentation;
@@ -196,6 +222,8 @@
 		58E97B022A1582F6001A2F5A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5832A3EE2A17B55E00C3074D /* CategoryCVCell */,
+				5832A3ED2A17B54700C3074D /* NewsCVCell */,
 				58E97B032A15830B001A2F5A /* NewsListCell */,
 			);
 			path = Cell;
@@ -204,22 +232,10 @@
 		58E97B032A15830B001A2F5A /* NewsListCell */ = {
 			isa = PBXGroup;
 			children = (
-				5898A2142A11214C00B0CDE9 /* NewsCVCell.swift */,
-				58B23F322A13A2EE0002CC02 /* CategoryCVCell.swift */,
 				5843F7B02A0EEB1F00A1360F /* NewsListTableViewCell.xib */,
 				5843F7AF2A0EEB1F00A1360F /* NewsListTableViewCell.swift */,
 			);
 			path = NewsListCell;
-			sourceTree = "<group>";
-		};
-		58E97B042A158379001A2F5A /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				5898A2022A10429500B0CDE9 /* HomePageVC.swift */,
-				5843F7A92A0EE4BB00A1360F /* NewsListVC.swift */,
-				5898A1F92A0FC9E900B0CDE9 /* DetailPageVC.swift */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		58E97B052A1583F8001A2F5A /* Extension */ = {

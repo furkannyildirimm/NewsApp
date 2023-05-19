@@ -14,7 +14,7 @@ final class CategoryCVCell: UICollectionViewCell {
     @IBOutlet private weak var outSV: UIStackView!
     
     // MARK: - Properties
-    let color = UIColor(hex: "AFD3E2")
+    private let color = UIColor(hex: "AFD3E2")
 
     override func awakeFromNib() {
         super.awakeFromNib()

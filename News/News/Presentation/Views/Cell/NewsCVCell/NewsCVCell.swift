@@ -12,13 +12,12 @@ import SDWebImage
 final class NewsCVCell: UICollectionViewCell {
     
     // MARK: - Outlets
-    
     @IBOutlet private weak var newsImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subsectionLabel: UILabel!
     @IBOutlet private weak var outSV: UIStackView!
     @IBOutlet private weak var titleSV: UIStackView!
-    let color = UIColor(hex: "AFD3E2")
+    private let color = UIColor(hex: "AFD3E2")
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,9 +15,9 @@ final class HomePageVC: UIViewController {
     @IBOutlet private weak var newsCollectionView: UICollectionView!
     
     // MARK: - Properties
-    var news: News?
+    private var news: News?
     private var selectedCategory: String = "arts"
-    var categories: [String] = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "obituaries", "opinion", "politics", "realestate", "science", "sports", "technology", "travel", "us", "world"]
+    private var categories: [String] = ["arts", "automobiles", "books", "business", "fashion", "food", "health", "home", "insider", "magazine", "movies", "obituaries", "opinion", "politics", "realestate", "science", "sports", "technology", "travel", "us", "world"]
     
     // MARK: - LifeCycle
     override func viewDidLoad() {

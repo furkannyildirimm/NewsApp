@@ -14,9 +14,9 @@ final class NewsListVC: UIViewController {
     @IBOutlet private weak var newsTableView: UITableView!
     
     // MARK: - Properties
-    var newsList: News?
-    var searchMake = false
-    var searchResult: News?
+    private var newsList: News?
+    private var searchMake = false
+    private var searchResult: News?
     private var notFoundImageView: UIImageView!
     
     // MARK: - Lifecycle

@@ -18,7 +18,7 @@ final class DetailPageVC: UIViewController {
     @IBOutlet private weak var bylineLabel: UILabel!
     
     // MARK: - Properties
-    var model: NewsResult?
+    private var model: NewsResult?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
