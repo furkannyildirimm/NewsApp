@@ -35,7 +35,7 @@ NewsAPP            | Iphone 14 Pro
 - Swift: iOS uygulama geliştirmek için kullanılan bir programlama dili.
 - NYTimes API: NYTimes'in sağladığı haberlere erişmek için kullanılan bir haber API'si.
 - Alamofire: HTTP istekleri yapmak için kullanılan bir Swift kütüphanesi.
-- SDWebImage: Uzaktan görüntüleri önbelleğe almak ve yüklemek için kullanılan bir Swift kütüphanesi.
+- SDWebImage: Uzaktan görüntüleri önbelleğe almak ve yüklemek için kullanılan bir Swift kütüphanesi..
 
 ## İletişim
 - Eğer herhangi bir sorunuz, öneriniz veya geri bildiriminiz varsa, bize şu e-posta adresinden ulaşabilirsiniz: [furkannyildirimm@hotmail.com]
